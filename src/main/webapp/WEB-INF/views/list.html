@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>List Customer</title>
+</head>
+<body>
+<h3>Song</h3>
+<p>
+    <a th:href="@{/songs/create}">
+        Add new Song
+    </a>
+</p>
+
+
+
+<table id = "customers">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Name Singer</th>
+        <th>Category</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s,cStatus : ${songs}">
+        <td th:text="${cStatus.count}"></td>
+        <td th:text="${s.getName()}"></td>
+        <td th:text="${s.getSinger()}"></td>
+        <td th:text="${s.getCategory()}"></td>
+        <td><a th:href="@{/songs/edit/{id}(id=${s.getId()})}">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

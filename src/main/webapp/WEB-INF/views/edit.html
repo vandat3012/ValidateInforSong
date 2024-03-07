@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/songs/edit}" th:object="${songs}"
+      method="POST">
+    <table>
+        <input type="hidden" th:field="*{id}"/>
+        <tr>
+            <td>Name:</td>
+            <td><input th:field="*{name}"></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>singer</td>
+            <td><input th:field="*{singer}"></td>
+            <td th:if="${#fields.hasErrors('singer')}" th:errors="*{singer}">Error</td>
+        </tr>
+        <tr>
+            <td>category</td>
+            <td><input type="text" th:field="*{category}"/></td>
+            <td th:if="${#fields.hasErrors('category')}" th:errors="*{category}"> Error</td>
+        </tr>
+    </table>
+    <button type="submit">submit</button>
+</form>
+</body>
+</html>
